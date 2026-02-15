@@ -1,7 +1,4 @@
 ---
-import animationsUrl from "@/scripts/animations.ts?url";
-import iconsUrl from "@/scripts/icons.ts?url";
-import navigationUrl from "@/scripts/navigation.ts?url";
 import "@/styles/global.css";
 
 const {
@@ -297,8 +294,16 @@ const jsonLdList = [websiteSchema, organizationSchema, ...pageSchemas];
       </div>
     </footer>
 
-    <script type="module" src={iconsUrl}></script>
-    <script type="module" src={navigationUrl}></script>
-    {enableAnimations && <script type="module" src={animationsUrl}></script>}
+    <script>
+      import "@/scripts/icons.ts";
+      import "@/scripts/navigation.ts";
+    </script>
+    {
+      enableAnimations && (
+        <script>
+          import "@/scripts/animations.ts";
+        </script>
+      )
+    }
   </body>
 </html>
