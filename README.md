@@ -47,26 +47,31 @@ Se exponen en frontend (no poner secretos):
 - Resend: `RESEND_API_KEY`, `BOOKING_EMAIL_FROM`, `BOOKING_EMAIL_TO`
 - WhatsApp Cloud API: `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_TO`
 
-## CI/CD (GitHub Actions)
+## CI/CD (GitHub + Vercel)
 
-Workflows incluidos en `.github/workflows`:
+### CI en GitHub Actions
 
-1. `ci.yml`
-- Corre en `push` y `pull_request` a `main`.
-- Ejecuta: instalación, `pnpm check`, `pnpm build`.
+Workflow incluido en `/Users/christiantorres/Developer/Proyectos/Psychologist Landing Page/.github/workflows/ci.yml`:
 
-2. `deploy-preview.yml`
-- Corre en PRs.
-- Dispara deploy preview vía webhook si existe `PREVIEW_DEPLOY_WEBHOOK_URL`.
+- Corre en `push` y `pull_request` a `main`
+- Ejecuta: `pnpm install --frozen-lockfile`, `pnpm check`, `pnpm build`
 
-3. `deploy-production.yml`
-- Corre en push a `main` y manual (`workflow_dispatch`).
-- Valida build y dispara deploy de producción vía `DEPLOY_WEBHOOK_URL`.
+### CD recomendado: Vercel con Git Integration
 
-### Secrets de GitHub requeridos
+Para evitar deploys duplicados y errores por webhooks, este proyecto usa **CI en GitHub** y **CD nativo en Vercel**.
 
-- `DEPLOY_WEBHOOK_URL` (obligatorio para deploy de producción)
-- `PREVIEW_DEPLOY_WEBHOOK_URL` (opcional, recomendado para preview por PR)
+1. En Vercel: `Add New -> Project`.
+2. Importa el repo `chrisdev-ui/melisa-psicologia-landing`.
+3. Framework Preset: `Astro`.
+4. Build command: `pnpm build`.
+5. Install command: `pnpm install --frozen-lockfile`.
+6. Output dir: `dist` (si Vercel lo solicita explícitamente).
+7. En `Environment Variables`, carga todas las variables de `.env.example`.
+8. Guarda y despliega.
+
+Con esto:
+- `main` -> producción automática
+- `pull_request` -> preview deployments automáticos
 
 ## Integraciones del formulario
 
