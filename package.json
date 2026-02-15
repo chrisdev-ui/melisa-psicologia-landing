@@ -1,0 +1,27 @@
+{
+  "name": "psicologia-landing",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.29.3",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/node": "latest",
+    "@tailwindcss/vite": "latest",
+    "astro": "latest",
+    "google-auth-library": "latest",
+    "google-spreadsheet": "latest",
+    "gsap": "latest",
+    "lucide": "^0.563.0",
+    "tailwindcss": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@types/node": "latest",
+    "typescript": "latest"
+  }
+}

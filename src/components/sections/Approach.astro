@@ -1,0 +1,110 @@
+---
+const journeySteps = [
+  {
+    number: "1",
+    gradient: "linear-gradient(135deg, #FF9B8A 0%, #F08070 100%)",
+    title: "Consulta inicial",
+    description:
+      "Una llamada breve para conocer tus inquietudes y validar si somos el apoyo adecuado para tu hijo.",
+  },
+  {
+    number: "2",
+    gradient: "linear-gradient(135deg, #6DD4B8 0%, #4DBB9E 100%)",
+    title: "Primera sesión",
+    description:
+      "Un encuentro cálido para comprender el contexto emocional, familiar y escolar con objetivos claros.",
+  },
+  {
+    number: "3",
+    gradient: "linear-gradient(135deg, #B8A0D8 0%, #9B84C8 100%)",
+    title: "Plan personalizado",
+    description:
+      "Diseñamos una estrategia terapéutica ajustada a las necesidades, ritmo y fortalezas de tu hijo.",
+  },
+  {
+    number: "4",
+    gradient: "linear-gradient(135deg, #7CC8E8 0%, #5BB8D8 100%)",
+    title: "Acompañamiento continuo",
+    description:
+      "Sesiones periódicas con seguimiento de avances y orientación a la familia durante todo el proceso.",
+  },
+];
+
+const journeyMeta = [
+  { icon: "video", text: "Sesiones online disponibles" },
+  { icon: "map-pin", text: "Atención presencial en consultorio" },
+  { icon: "clock-3", text: "Sesiones de 45-50 minutos" },
+];
+---
+
+<section
+  id="journey"
+  class="section relative overflow-hidden"
+  style="background: linear-gradient(45deg, #FFFFFF 0%, #FFF8F5 50%, #F8F5FF 100%);"
+>
+  <div class="container relative z-10">
+    <div class="mx-auto flex max-w-3xl flex-col items-center text-center" data-animate-group>
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-[#E8F0E6] px-4 py-2 text-[14px] font-semibold tracking-normal text-[#8BA888]"
+        data-animate-child
+      >
+        <i data-lucide="compass" class="h-4 w-4 text-[#8BA888]" stroke-width="1.7"></i>
+        El proceso
+      </div>
+
+      <h2 class="mt-5 text-[34px] font-bold leading-normal tracking-normal text-[#3D3D3D] md:text-[44px]" data-animate-child>
+        ¿Qué puedes esperar?
+      </h2>
+
+      <p class="mt-4 text-[18px] font-normal leading-normal tracking-normal text-[#6B6B6B]" data-animate-child>
+        Un proceso cercano y de apoyo, diseñado para reducir la incertidumbre y construir confianza.
+      </p>
+    </div>
+
+    <div class="mx-auto mt-10 max-w-4xl" data-animate="fade-up">
+      <div
+        class="relative overflow-hidden rounded-[24px] border border-white/45 p-8"
+        style="background: linear-gradient(135deg, rgba(244, 232, 250, 0.85) 0%, rgba(232, 248, 242, 0.85) 100%);"
+      >
+        <div class="flex h-[340px] items-center justify-center rounded-[18px] bg-white/20 backdrop-blur-[1px]">
+          <button
+            type="button"
+            class="group flex h-20 w-20 items-center justify-center rounded-full bg-[linear-gradient(90deg,#FF8A7A_0%,#E8A4C9_100%)] text-white shadow-soft transition-transform duration-200 hover:scale-105"
+            aria-label="Play video"
+          >
+            <i data-lucide="play" class="ml-1 h-8 w-8 transition-transform duration-200 group-hover:translate-x-0.5" stroke-width="2"></i>
+          </button>
+        </div>
+        <span class="absolute bottom-5 right-5 rounded-lg bg-[#3D3D3D]/65 px-2.5 py-1 text-[14px] font-semibold text-white">2:45</span>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-animate-group>
+      {
+        journeySteps.map((step) => (
+          <article class="text-center" data-animate-child>
+            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full text-[22px] font-bold text-white" style={`background: ${step.gradient}`}>
+              {step.number}
+            </div>
+            <h3 class="mt-5 text-[20px] font-bold leading-normal tracking-normal text-[#3D3D3D]">{step.title}</h3>
+            <p class="mt-3 text-[15px] font-normal leading-[160%] tracking-normal text-[#6B6B6B]">{step.description}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-4" data-animate-group>
+      {
+        journeyMeta.map((item) => (
+          <div class="inline-flex items-center gap-3 rounded-[16px] bg-[#EFF7FB] px-6 py-4 text-[18px] font-medium text-[#5B6F7E]" data-animate-child>
+            <i data-lucide={item.icon} class="h-5 w-5 text-[#8BA3B3]" stroke-width="1.8"></i>
+            {item.text}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="pointer-events-none absolute -left-10 top-10 h-32 w-32 rounded-full bg-[#EAF6F2] opacity-30 blur-[20px]"></div>
+  <div class="pointer-events-none absolute right-10 top-24 h-14 w-14 rounded-[14px] bg-[#F4EAF8] opacity-25 rotate-12 blur-[1px]"></div>
+</section>

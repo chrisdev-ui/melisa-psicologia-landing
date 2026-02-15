@@ -1,0 +1,46 @@
+---
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  class: className = "",
+  type = "button",
+  target,
+  rel,
+  ...rest
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]";
+
+const variants = {
+  primary:
+    "bg-primary text-primary-foreground shadow-soft hover:bg-[color-mix(in srgb,var(--primary) 90%,black)]",
+  secondary:
+    "border border-foreground/15 bg-white text-foreground hover:border-primary hover:text-primary",
+  ghost: "text-foreground/80 hover:text-primary",
+};
+
+const sizes = {
+  sm: "px-4 py-2 text-xs",
+  md: "px-6 py-3 text-sm",
+  lg: "px-7 py-3.5 text-sm",
+};
+
+const classes = [base, variants[variant] ?? variants.primary, sizes[size] ?? sizes.md, className]
+  .filter(Boolean)
+  .join(" ");
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+  class={classes}
+  href={href}
+  type={!href ? type : undefined}
+  target={target}
+  rel={rel}
+  {...rest}
+>
+  <slot />
+</Tag>

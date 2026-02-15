@@ -1,0 +1,83 @@
+---
+const aboutImage = "/about-photo.webp";
+---
+
+<section
+  id="about"
+  class="section relative overflow-hidden"
+  style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF8FD 50%, #F8FFFD 100%);"
+>
+  <div class="container relative z-10 grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="relative" data-animate="fade-up">
+      <div class="relative overflow-hidden rounded-[32px] bg-white shadow-soft">
+        <img
+          src={aboutImage}
+          alt="Psicóloga clínica infantil y adolescente en Medellín"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          width="420"
+          height="500"
+        />
+      </div>
+    </div>
+
+    <div data-animate-group>
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#F5E8FA_0%,#EBD8F5_100%)] px-4 py-2 text-[14px] font-semibold text-[#9B8DC7]"
+        data-animate-child
+      >
+        <span class="flex h-5 w-5 items-center justify-center">
+          <i data-lucide="sparkles" class="h-4 w-4 text-[#9B8DC7]" stroke-width="1.6"></i>
+        </span>
+        Sobre mí
+      </div>
+
+      <h2
+        class="mt-5 text-[36px] font-bold leading-[120%] tracking-normal text-[#3D3D3D] md:text-[44px]"
+        data-animate-child
+      >
+        Un espacio seguro para el crecimiento emocional de tu familia
+      </h2>
+
+      <p class="mt-4 text-[17px] font-normal leading-[170%] text-[#6B6B6B]" data-animate-child>
+        Soy psicóloga clínica especializada en infancia y adolescencia. Acompaño a niños, niñas y adolescentes que presentan
+        dificultades emocionales, conductuales o que han vivido experiencias difíciles o traumáticas.
+      </p>
+      <p class="mt-4 text-[17px] font-normal leading-[170%] text-[#6B6B6B]" data-animate-child>
+        Cuento con experiencia en el abordaje de ansiedad, TDAH, procesos del neurodesarrollo y situaciones de violencia,
+        brindando un espacio seguro donde los niños pueden expresar lo que sienten y aprender herramientas para regular sus
+        emociones.
+      </p>
+      <p class="mt-4 text-[17px] font-normal leading-[170%] text-[#6B6B6B]" data-animate-child>
+        Trabajo de la mano con las familias, integrando juego terapéutico, arteterapia y enfoques basados en evidencia,
+        fortaleciendo el vínculo familiar y promoviendo cambios reales y sostenibles en el bienestar emocional de sus hijos.
+      </p>
+
+      <div class="mt-6 grid gap-4 text-sm text-[#6B6B6B] sm:grid-cols-3" data-animate-child>
+        <div class="flex items-center gap-2">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-soft">
+            <i data-lucide="graduation-cap" class="h-4 w-4 text-[#5DBB9E]" stroke-width="1.6"></i>
+          </span>
+          Psicóloga Clínica
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-soft">
+            <i data-lucide="badge-check" class="h-4 w-4 text-[#5DBB9E]" stroke-width="1.6"></i>
+          </span>
+          Licenciada y certificada
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-soft">
+            <i data-lucide="briefcase" class="h-4 w-4 text-[#5DBB9E]" stroke-width="1.6"></i>
+          </span>
+          4+ años de experiencia
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pointer-events-none absolute left-12 top-20 h-16 w-16 rounded-[18px] bg-[#E9F0FB] opacity-30 rotate-12"></div>
+  <div class="pointer-events-none absolute right-20 top-12 h-20 w-20 rounded-full bg-[#EBDCF6] opacity-25"></div>
+  <div class="pointer-events-none absolute bottom-16 left-10 h-28 w-28 rounded-full bg-[#E5F7F3] opacity-25"></div>
+</section>

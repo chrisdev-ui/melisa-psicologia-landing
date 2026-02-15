@@ -1,0 +1,60 @@
+---
+import BaseLayout from "@/layouts/Base.astro";
+import Hero from "@/components/sections/Hero.astro";
+import Highlights from "@/components/sections/Highlights.astro";
+import Approach from "@/components/sections/Approach.astro";
+import About from "@/components/sections/About.astro";
+import Booking from "@/components/sections/Booking.astro";
+import TrustSafety from "@/components/sections/TrustSafety.astro";
+import ContactCta from "@/components/sections/ContactCta.astro";
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "Dra. Melissa Mejía Hernández";
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? "https://www.psicologiamedellin.co").replace(/\/+$/, "");
+const canonicalUrl = `${siteUrl}/`;
+
+const pageSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteUrl}/#webpage`,
+    url: canonicalUrl,
+    name: `${siteName} | Psicóloga infantil y adolescente en Medellín`,
+    inLanguage: "es-CO",
+    description:
+      "Psicología infantil y adolescente en Medellín, Colombia. Acompañamiento emocional para niños, adolescentes y familias.",
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": `${siteUrl}/#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${siteUrl}/#servicio-principal`,
+    serviceType: "Psicología infantil y adolescente",
+    provider: { "@id": `${siteUrl}/#organization` },
+    areaServed: [
+      { "@type": "City", name: "Medellín" },
+      { "@type": "AdministrativeArea", name: "Antioquia" },
+      { "@type": "Country", name: "Colombia" },
+    ],
+    availableLanguage: ["es-CO"],
+    url: canonicalUrl,
+  },
+];
+---
+
+<BaseLayout
+  title={`${siteName} | Psicóloga infantil y adolescente en Medellín, Colombia`}
+  description="Psicóloga infantil y adolescente en Medellín, Colombia. Terapia para niños, adolescentes y jóvenes con enfoque clínico, humano y basado en evidencia."
+  canonical={canonicalUrl}
+  keywords="psicóloga infantil Medellín, psicóloga adolescente Medellín, terapia infantil Medellín, psicología infantil Colombia, psicóloga clínica Medellín"
+  jsonLd={pageSchemas}
+  enableAnimations={true}
+>
+  <Hero />
+  <About />
+  <Highlights />
+  <Approach />
+  <Booking />
+  <TrustSafety />
+  <ContactCta />
+</BaseLayout>

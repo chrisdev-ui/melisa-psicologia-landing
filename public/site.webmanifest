@@ -1,0 +1,23 @@
+{
+  "name": "Dra. Melissa Mejía Hernández",
+  "short_name": "Psicología Melissa",
+  "lang": "es-CO",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#2D3B3A",
+  "description": "Psicología infantil y adolescente en Medellín, Colombia.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

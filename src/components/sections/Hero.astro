@@ -1,0 +1,127 @@
+---
+const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+---
+
+<section
+  id="hero"
+  class="relative overflow-hidden"
+  style="background: linear-gradient(135deg, #F0FBF8 0%, #F5F0FA 50%, #FFF5F3 100%);"
+>
+  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <div
+      class="absolute right-[-18%] top-[-12%] h-[520px] w-[520px] rounded-full"
+      style="background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%); filter: blur(80px);"
+      data-hero-glow
+    ></div>
+    <div
+      class="absolute bottom-[-25%] right-[10%] h-[520px] w-[620px] rounded-full"
+      style="background: radial-gradient(circle, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 70%); filter: blur(90px);"
+      data-hero-glow
+    ></div>
+  </div>
+
+  <div class="container relative z-10 grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr]">
+    <div class="relative z-10" data-animate-group>
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,rgba(232,249,245,0.85)_0%,rgba(240,235,248,0.85)_100%)] px-4 py-2 text-[14px] font-semibold tracking-normal text-[#5DBB9E]"
+        data-animate-child
+      >
+        <span class="flex h-5 w-5 items-center justify-center">
+          <i data-lucide="heart" class="h-4 w-4 text-[#5DBB9E]" stroke-width="1.6"></i>
+        </span>
+        Psicóloga infantil y adolescente
+      </div>
+
+      <h1
+        class="mt-6 text-[36px] font-bold leading-[115%] tracking-normal text-[#3D3D3D] sm:text-[42px] md:text-[56px]"
+        data-animate-child
+      >
+        Acompañando a niñas, niños y adolescentes a descubrir su fortaleza interior en Medellín.
+      </h1>
+      <p
+        class="mt-4 text-[18px] font-normal leading-[160%] tracking-normal text-[#6B6B6B] md:text-[20px]"
+        data-animate-child
+      >
+        Creamos un espacio seguro y cálido en Medellín, Colombia, para que niños, adolescentes y jóvenes exploren sus emociones y fortalezcan su resiliencia.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4" data-animate-child>
+        <a
+          class="group inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#FF8A7A_0%,#E8A4C9_100%)] px-7 py-3 text-[17px] font-semibold tracking-normal text-white shadow-soft"
+          href={whatsappLink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Agendar una cita
+          <i data-lucide="arrow-right" class="h-4 w-4 text-white transition-transform duration-200 group-hover:translate-x-1" stroke-width="2"></i>
+        </a>
+        <a class="btn-outline-gradient" href="#about">Conoce más sobre mí</a>
+      </div>
+    </div>
+
+    <div class="relative z-10" data-animate="fade-up" data-hero-image>
+      <div class="relative overflow-hidden rounded-[28px] bg-white shadow-soft">
+        <img
+          src="/hero-main.webp"
+          alt="Sesión de psicología infantil en Medellín, Colombia"
+          class="h-full w-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="520"
+          height="480"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-40 backdrop-blur-[18px]" style="background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 78%); mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 78%);"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 z-[5] w-40 backdrop-blur-[18px]" style="background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 100%); -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 78%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 78%);"></div>
+
+  <div class="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-[#BFEDE3] opacity-60 blur-[90px]" data-parallax data-parallax-speed="24"></div>
+  <div class="pointer-events-none absolute right-0 top-24 h-80 w-80 rounded-full bg-[#F2C9D9] opacity-50 blur-[100px]" data-parallax data-parallax-speed="28"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E7E0F4] opacity-40 blur-[110px]" data-parallax data-parallax-speed="20"></div>
+
+  <div
+    class="pointer-events-none absolute left-8 top-24 h-40 w-40 rounded-full bg-[#7DDCCB] opacity-50"
+    data-animate
+    data-bounce
+    data-bounce-distance="6"
+    data-bounce-duration="7"
+  ></div>
+  <div
+    class="pointer-events-none absolute left-16 top-72 h-16 w-16 rounded-[18px] bg-[#7AD7C1] opacity-70 rotate-12"
+    data-animate
+    data-bounce
+    data-bounce-distance="4"
+    data-bounce-duration="6"
+  ></div>
+  <div
+    class="pointer-events-none absolute left-40 bottom-16 h-20 w-20 rounded-full bg-[#F8A6A6] opacity-40"
+    data-animate
+    data-bounce
+    data-bounce-distance="5"
+    data-bounce-duration="8"
+  ></div>
+  <div
+    class="pointer-events-none absolute right-32 top-20 h-16 w-16 rounded-full bg-[#CBB7E8] opacity-60"
+    data-animate
+    data-bounce
+    data-bounce-distance="4"
+    data-bounce-duration="7"
+  ></div>
+  <div
+    class="pointer-events-none absolute right-20 top-40 h-10 w-10 rounded-full bg-[#B8A1D9] opacity-60"
+    data-animate
+    data-bounce
+    data-bounce-distance="3"
+    data-bounce-duration="6"
+  ></div>
+  <div
+    class="pointer-events-none absolute right-10 top-10 h-16 w-16 rotate-45 rounded-[18px] bg-[#FFD05C] opacity-70"
+    data-animate
+    data-bounce
+    data-bounce-distance="4"
+    data-bounce-duration="9"
+  ></div>
+</section>

@@ -1,0 +1,165 @@
+---
+const checklist = [
+  'Consulta inicial gratuita de 15 minutos',
+  'Horarios flexibles entre semana',
+  'Opciones online y presencial',
+  'Confirmación enviada a tu correo',
+];
+---
+
+<section
+  id="booking"
+  class="section relative overflow-hidden"
+  style="background: linear-gradient(135deg, #E8F9F5 0%, #D4F2EA 50%, #E5F0F8 100%);"
+>
+  <div class="container relative z-10 grid items-start gap-10 lg:grid-cols-[1fr_0.92fr]">
+    <div class="max-w-xl" data-animate-group>
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(90deg,#FFFFFF_0%,#F8FFFD_100%)] px-4 py-2 text-[14px] font-semibold tracking-normal text-[#8BA888]"
+        data-animate-child
+      >
+        <i data-lucide="calendar-check" class="h-4 w-4 text-[#8BA888]" stroke-width="1.8"></i>
+        Agenda
+      </div>
+
+      <h2 class="mt-6 text-[34px] font-bold leading-[120%] tracking-normal text-[#3D3D3D] md:text-[44px]" data-animate-child>
+        Da el primer paso hacia el bienestar emocional
+      </h2>
+
+      <p class="mt-5 text-[17px] font-normal leading-[170%] tracking-normal text-[#5F6B70]" data-animate-child>
+        Agendar una cita es fácil y sin presión. Elige sesión online o presencial y encuentra un horario que funcione para tu familia en Medellín o desde cualquier lugar de Colombia.
+      </p>
+
+      <ul class="mt-8 space-y-3" data-animate-group>
+        {
+          checklist.map((item) => (
+            <li class="flex items-center gap-3 text-[16px] font-medium leading-normal tracking-normal text-[#3E4A4F]" data-animate-child>
+              <i data-lucide="check-circle" class="h-[22px] w-[22px] shrink-0 text-[#8BA888]" stroke-width="1.8"></i>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <form
+      action="/api/booking"
+      method="post"
+      class="rounded-[28px] bg-white p-8 shadow-soft"
+      data-animate="fade-up"
+    >
+      <h3 class="text-[24px] font-bold leading-normal tracking-normal text-[#3D3D3D]">Solicitar una cita</h3>
+
+      <div class="mt-6 space-y-4">
+        <div>
+          <label for="guardian_name" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Nombre del padre/madre o acudiente</label>
+          <input
+            id="guardian_name"
+            name="guardian_name"
+            required
+            class="mt-2 w-full rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3 text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none transition focus:border-[#A3C4D9]"
+            placeholder="Ingresa tu nombre completo"
+            autocomplete="name"
+          />
+        </div>
+
+        <div>
+          <label for="patient_name" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Nombre del paciente</label>
+          <input
+            id="patient_name"
+            name="patient_name"
+            required
+            class="mt-2 w-full rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3 text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none transition focus:border-[#A3C4D9]"
+            placeholder="Nombre del niño, niña o adolescente"
+          />
+        </div>
+
+        <div>
+          <label for="patient_age" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Edad del paciente</label>
+          <input
+            id="patient_age"
+            name="patient_age"
+            required
+            class="mt-2 w-full rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3 text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none transition focus:border-[#A3C4D9]"
+            placeholder="Ej. 12 años"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Correo electrónico</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="mt-2 w-full rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3 text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none transition focus:border-[#A3C4D9]"
+            placeholder="tu@email.com"
+            autocomplete="email"
+          />
+        </div>
+
+        <div>
+          <label for="phone" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Teléfono / WhatsApp</label>
+          <div class="mt-2 flex items-center gap-2 rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3">
+            <i data-lucide="phone" class="h-5 w-5 text-[#8BA3B3]" stroke-width="1.8"></i>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              class="w-full bg-transparent text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none"
+              placeholder="(300) 000-0000"
+              autocomplete="tel"
+            />
+          </div>
+        </div>
+
+        <div>
+          <p class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Tipo de sesión</p>
+          <div class="mt-2 grid grid-cols-2 gap-3">
+            <label class="group cursor-pointer">
+              <input type="radio" name="session_type" value="Online" class="peer sr-only" checked />
+              <span class="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border-2 border-[#E5E2DC] bg-white px-4 py-3 text-[15px] font-medium leading-normal tracking-normal text-[#5F6B70] transition peer-checked:border-0 peer-checked:bg-[linear-gradient(90deg,#5DBB9E_0%,#4AAB8E_100%)] peer-checked:text-white">
+                <i data-lucide="video" class="h-5 w-5" stroke-width="1.8"></i>
+                Online
+              </span>
+            </label>
+            <label class="group cursor-pointer">
+              <input type="radio" name="session_type" value="Presencial" class="peer sr-only" />
+              <span class="inline-flex w-full items-center justify-center gap-2 rounded-[12px] border-2 border-[#E5E2DC] bg-white px-4 py-3 text-[15px] font-medium leading-normal tracking-normal text-[#5F6B70] transition peer-checked:border-0 peer-checked:bg-[linear-gradient(90deg,#5DBB9E_0%,#4AAB8E_100%)] peer-checked:text-white">
+                <i data-lucide="building-2" class="h-5 w-5" stroke-width="1.8"></i>
+                Presencial
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="text-[14px] font-semibold leading-normal tracking-normal text-[#3D3D3D]">Mensaje breve (opcional)</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="mt-2 w-full resize-none rounded-[12px] border border-[#ECECEC] bg-[#FAF9F6] px-4 py-3 text-[15px] font-normal leading-normal tracking-normal text-[#3D3D3D] placeholder:text-[15px] placeholder:font-normal placeholder:leading-normal placeholder:tracking-normal placeholder:text-[#9A9A9A] outline-none transition focus:border-[#A3C4D9]"
+            placeholder="Cuéntame qué necesitas para orientarte mejor"
+          ></textarea>
+        </div>
+      </div>
+
+      <input type="text" name="company" class="hidden" tabindex="-1" autocomplete="off" />
+
+      <button
+        type="submit"
+        class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[linear-gradient(90deg,#FF8A7A_0%,#E8A4C9_100%)] px-7 py-3.5 text-[17px] font-semibold leading-normal tracking-normal text-white shadow-soft transition hover:-translate-y-0.5"
+      >
+        Solicitar cita
+        <i data-lucide="send" class="h-5 w-5" stroke-width="2"></i>
+      </button>
+
+      <p class="mt-4 text-center text-[13px] font-normal leading-normal tracking-normal text-[#9A9A9A]">Responderemos en menos de 24 horas hábiles.</p>
+    </form>
+  </div>
+
+  <div class="pointer-events-none absolute -left-4 bottom-14 h-14 w-14 rounded-[10px] bg-[rgba(240,140,122,0.07)] rotate-12"></div>
+  <div class="pointer-events-none absolute right-8 top-24 h-16 w-16 rounded-[12px] bg-[rgba(240,140,122,0.07)] -rotate-6"></div>
+</section>

@@ -1,0 +1,304 @@
+---
+import animationsUrl from "@/scripts/animations.ts?url";
+import iconsUrl from "@/scripts/icons.ts?url";
+import navigationUrl from "@/scripts/navigation.ts?url";
+import "@/styles/global.css";
+
+const {
+  title = "Psicología infantil y adolescente",
+  description = "Psicóloga en Colombia para niños, adolescentes y jóvenes adultos. Terapia centrada en el bienestar emocional y familiar.",
+  canonical = "",
+  keywords = "psicóloga infantil Medellín, psicóloga infantil Colombia, psicología adolescente Medellín, terapia infantil Medellín",
+  robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
+  ogType = "website",
+  ogImage = "",
+  jsonLd = [],
+  enableAnimations = false,
+} = Astro.props;
+
+const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "Dra. Melissa Mejía Hernández";
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? "https://www.psicologiamedellin.co").replace(/\/+$/, "");
+const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL ?? "#";
+const linkedinUrl = import.meta.env.PUBLIC_LINKEDIN_URL ?? "#";
+const facebookUrl = import.meta.env.PUBLIC_FACEBOOK_URL ?? "#";
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE ?? "+57 300 000 0000";
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "agenda@psicologiamelissa.com";
+
+const currentPath = Astro.url.pathname ?? "/";
+const normalizedPath = currentPath === "/" ? "/" : currentPath.replace(/\/+$/, "");
+const canonicalUrl = canonical || `${siteUrl}${normalizedPath}`;
+
+const ogImagePath = ogImage || import.meta.env.PUBLIC_OG_IMAGE || "/og-image.png";
+const ogImageUrl = ogImagePath.startsWith("http")
+  ? ogImagePath
+  : `${siteUrl}${ogImagePath.startsWith("/") ? ogImagePath : `/${ogImagePath}`}`;
+
+const socialLinks = [instagramUrl, linkedinUrl, facebookUrl].filter((url) => url && url !== "#");
+const isHome = normalizedPath === "/";
+const navPrefix = isHome ? "" : "/";
+const navItems = [
+  { href: `${navPrefix}#about`, label: "Sobre mí" },
+  { href: `${navPrefix}#specialization`, label: "Especialidades" },
+  { href: `${navPrefix}#journey`, label: "Proceso" },
+  { href: `${navPrefix}#booking`, label: "Reserva" },
+  { href: `${navPrefix}#contact-cta`, label: "Contacto" },
+];
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: siteName,
+  inLanguage: "es-CO",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Psychologist",
+  "@id": `${siteUrl}/#organization`,
+  name: siteName,
+  url: siteUrl,
+  image: ogImageUrl,
+  description,
+  telephone: contactPhone,
+  email: contactEmail,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Medellín",
+    addressRegion: "Antioquia",
+    addressCountry: "CO",
+  },
+  areaServed: [
+    { "@type": "City", name: "Medellín" },
+    { "@type": "Country", name: "Colombia" },
+  ],
+  availableLanguage: ["es-CO"],
+  sameAs: socialLinks,
+};
+
+const pageSchemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const jsonLdList = [websiteSchema, organizationSchema, ...pageSchemas];
+---
+
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={siteName} />
+    <meta name="robots" content={robots} />
+    <meta name="googlebot" content={robots} />
+    <meta name="theme-color" content="#2D3B3A" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" href={canonicalUrl} hreflang="es-CO" />
+    <link rel="alternate" href={canonicalUrl} hreflang="es" />
+    <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={`Psicología infantil y adolescente en Medellín - ${siteName}`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    {isHome && <link rel="preload" as="image" href="/hero-main.webp" type="image/webp" fetchpriority="high" />}
+
+    {
+      jsonLdList.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    }
+  </head>
+  <body>
+    <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold">
+      Saltar al contenido
+    </a>
+
+    <div class="relative">
+      <header data-site-header class="sticky top-0 z-50 border-b border-[#ECECEC] bg-white/95 backdrop-blur-md">
+        <div class="container flex items-center justify-between gap-4 py-3">
+          <a href="/" class="flex min-w-0 items-center gap-3" aria-label={`Inicio - ${siteName}`}>
+            <img
+              src="/logo.webp"
+              alt={siteName}
+              width="762"
+              height="892"
+              class="h-20 w-auto shrink-0 object-contain"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <span class="sr-only">{siteName}</span>
+          </a>
+
+          <div class="hidden items-center gap-10 md:flex">
+            <nav class="flex items-center gap-8 text-[16px] font-medium tracking-normal text-[#6B6B6B]" aria-label="Navegación principal">
+              {
+                navItems.map((item) => (
+                  <a href={item.href} class="nav-link" data-section-link>
+                    {item.label}
+                  </a>
+                ))
+              }
+            </nav>
+            <a
+              class="inline-flex items-center rounded-full bg-[linear-gradient(90deg,#FF8A7A_0%,#E8A4C9_100%)] px-6 py-2.5 text-[15px] font-semibold tracking-normal text-white shadow-soft transition hover:-translate-y-0.5"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agendar cita
+            </a>
+          </div>
+
+          <button
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#EAEAEA] text-[#3D3D3D] transition hover:bg-[#F8F8F8] md:hidden"
+            data-mobile-menu-button
+            aria-controls="mobile-navigation"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+          >
+            <svg data-menu-open-icon class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 6h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 18h16"></path>
+            </svg>
+            <svg data-menu-close-icon class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="m6 6 12 12"></path>
+              <path d="m18 6-12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="mobile-navigation" class="hidden border-t border-[#ECECEC] bg-white md:hidden" data-mobile-menu>
+          <nav class="container flex flex-col gap-1 py-3" aria-label="Navegación móvil">
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class="mobile-nav-link rounded-xl px-3 py-2 text-[16px] font-medium tracking-normal text-[#6B6B6B] transition"
+                  data-section-link
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <a
+              class="mt-2 inline-flex items-center justify-center rounded-full bg-[linear-gradient(90deg,#FF8A7A_0%,#E8A4C9_100%)] px-6 py-2.5 text-[15px] font-semibold tracking-normal text-white shadow-soft"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agendar cita
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="contenido-principal">
+        <slot />
+      </main>
+    </div>
+
+    <footer class="bg-[linear-gradient(180deg,#2D3B3A_0%,#3D4B4A_100%)]">
+      <div class="container py-14">
+        <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div class="max-w-sm">
+            <div class="flex items-center gap-3">
+              <img src="/logo.webp" alt={siteName} width="762" height="892" class="w-24" loading="lazy" decoding="async" />
+              <p class="text-[20px] font-semibold leading-normal tracking-normal text-white">{siteName}</p>
+            </div>
+            <p class="mt-4 text-[15px] font-normal leading-normal tracking-normal text-[rgba(255,255,255,0.6)]">
+              Psicología infantil y adolescente con enfoque humano y acompañamiento basado en evidencia.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-12 md:gap-20">
+            <div>
+              <p class="text-[14px] font-semibold leading-normal tracking-normal text-white">Enlaces rápidos</p>
+              <nav class="mt-4 flex flex-col gap-3 text-[14px] font-normal leading-normal tracking-normal text-[rgba(255,255,255,0.6)]" aria-label="Enlaces rápidos del pie de página">
+                <a href={`${navPrefix}#about`} class="transition hover:text-white">Sobre mí</a>
+                <a href={`${navPrefix}#specialization`} class="transition hover:text-white">Especialidades</a>
+                <a href={`${navPrefix}#journey`} class="transition hover:text-white">Proceso</a>
+                <a href={`${navPrefix}#contact-cta`} class="transition hover:text-white">Contacto</a>
+              </nav>
+            </div>
+
+            <div>
+              <p class="text-[14px] font-semibold leading-normal tracking-normal text-white">Legal</p>
+              <div class="mt-4 flex flex-col gap-3 text-[14px] font-normal leading-normal tracking-normal text-[rgba(255,255,255,0.6)]">
+                <a href="#" class="transition hover:text-white">Política de privacidad</a>
+                <a href="#" class="transition hover:text-white">Términos de servicio</a>
+                <a href="#" class="transition hover:text-white">Aviso legal</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 h-px bg-[rgba(255,255,255,0.13)]"></div>
+
+        <div class="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p class="text-[13px] font-normal leading-normal tracking-normal text-[rgba(255,255,255,0.4)]">© {new Date().getFullYear()} {siteName}. Todos los derechos reservados.</p>
+
+          <div class="flex items-center gap-3" aria-label="Redes sociales">
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-[12px] bg-[linear-gradient(135deg,rgba(255,255,255,0.13)_0%,rgba(255,255,255,0.06)_100%)] text-[rgba(255,255,255,0.6)] transition hover:text-white"
+            >
+              <i data-lucide="instagram" class="h-[18px] w-[18px]" stroke-width="1.9"></i>
+            </a>
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-[12px] bg-[linear-gradient(135deg,rgba(255,255,255,0.13)_0%,rgba(255,255,255,0.06)_100%)] text-[rgba(255,255,255,0.6)] transition hover:text-white"
+            >
+              <i data-lucide="linkedin" class="h-[18px] w-[18px]" stroke-width="1.9"></i>
+            </a>
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-[12px] bg-[linear-gradient(135deg,rgba(255,255,255,0.13)_0%,rgba(255,255,255,0.06)_100%)] text-[rgba(255,255,255,0.6)] transition hover:text-white"
+            >
+              <i data-lucide="facebook" class="h-[18px] w-[18px]" stroke-width="1.9"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src={iconsUrl}></script>
+    <script type="module" src={navigationUrl}></script>
+    {enableAnimations && <script type="module" src={animationsUrl}></script>}
+  </body>
+</html>
