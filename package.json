@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/node": "latest",
+    "@astrojs/vercel": "^9.0.4",
     "@tailwindcss/vite": "latest",
     "astro": "latest",
     "google-auth-library": "latest",
