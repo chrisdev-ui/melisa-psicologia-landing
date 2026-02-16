@@ -1,7 +1,8 @@
 ---
+import { getWhatsAppLink } from "@/utils/whatsapp";
 import BaseLayout from "@/layouts/Base.astro";
 
-const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+const whatsappLink = getWhatsAppLink();
 ---
 
 <BaseLayout

@@ -1,5 +1,6 @@
 ---
-const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+import { getWhatsAppLink } from "@/utils/whatsapp";
+const whatsappLink = getWhatsAppLink();
 const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE ?? "+57 300 000 0000";
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL ?? "agenda@psicologiamelissa.com";
 const officeAddress = import.meta.env.PUBLIC_OFFICE_ADDRESS ?? "Consulta presencial en Medellín, Colombia";

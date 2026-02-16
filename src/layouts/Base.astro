@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import { getWhatsAppLink } from "@/utils/whatsapp";
 
 const {
   title = "Psicología infantil y adolescente",
@@ -15,7 +16,7 @@ const {
 
 const siteName = import.meta.env.PUBLIC_SITE_NAME ?? "Dra. Melissa Mejía Hernández";
 const siteUrl = (import.meta.env.PUBLIC_SITE_URL ?? "https://www.psicologiamedellin.co").replace(/\/+$/, "");
-const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+const whatsappLink = getWhatsAppLink();
 const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL ?? "#";
 const linkedinUrl = import.meta.env.PUBLIC_LINKEDIN_URL ?? "#";
 const facebookUrl = import.meta.env.PUBLIC_FACEBOOK_URL ?? "#";

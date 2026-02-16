@@ -7,17 +7,16 @@ interface ImportMetaEnv {
   readonly GOOGLE_SHEET_TAB?: string;
   readonly GOOGLE_SHEET_BOOKING_TAB?: string;
 
-  readonly RESEND_API_KEY?: string;
-  readonly BOOKING_EMAIL_FROM?: string;
+  readonly SENDGRID_API_KEY?: string;
+  readonly SENDGRID_FROM_EMAIL?: string;
+  readonly SENDGRID_FROM_NAME?: string;
   readonly BOOKING_EMAIL_TO?: string;
-
-  readonly WHATSAPP_TOKEN?: string;
-  readonly WHATSAPP_PHONE_NUMBER_ID?: string;
-  readonly WHATSAPP_TO?: string;
 
   readonly PUBLIC_SITE_NAME?: string;
   readonly PUBLIC_SITE_URL?: string;
   readonly PUBLIC_OG_IMAGE?: string;
+  readonly PUBLIC_WHATSAPP_NUMBER?: string;
+  readonly PUBLIC_WHATSAPP_MESSAGE?: string;
   readonly PUBLIC_WHATSAPP_LINK?: string;
   readonly PUBLIC_OFFICE_ADDRESS?: string;
   readonly PUBLIC_CONTACT_EMAIL?: string;

@@ -32,7 +32,9 @@ Se exponen en frontend (no poner secretos):
 - `PUBLIC_SITE_NAME`
 - `PUBLIC_SITE_URL`
 - `PUBLIC_OG_IMAGE`
-- `PUBLIC_WHATSAPP_LINK`
+- `PUBLIC_WHATSAPP_NUMBER`
+- `PUBLIC_WHATSAPP_MESSAGE`
+- `PUBLIC_WHATSAPP_LINK` (opcional, override manual)
 - `PUBLIC_CONTACT_PHONE`
 - `PUBLIC_CONTACT_EMAIL`
 - `PUBLIC_OFFICE_ADDRESS`
@@ -44,8 +46,7 @@ Se exponen en frontend (no poner secretos):
 ### Privadas (solo servidor)
 
 - Google Sheets: `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`, `GOOGLE_SHEET_ID`, `GOOGLE_SHEET_TAB`, `GOOGLE_SHEET_BOOKING_TAB`
-- Resend: `RESEND_API_KEY`, `BOOKING_EMAIL_FROM`, `BOOKING_EMAIL_TO`
-- WhatsApp Cloud API: `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_TO`
+- SendGrid: `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`, `SENDGRID_FROM_NAME`, `BOOKING_EMAIL_TO`
 
 ## CI/CD (GitHub + Vercel)
 
@@ -78,5 +79,5 @@ Con esto:
 Endpoint: `/api/booking`
 
 - Guarda en Google Spreadsheet
-- Envía notificación por WhatsApp Cloud API
-- Envía correo por Resend solo si su configuración existe
+- Envía correo con SendGrid (si su configuración existe)
+- Los CTA usan enlace `wa.me` con mensaje plantilla para primer contacto

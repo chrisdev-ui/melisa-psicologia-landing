@@ -1,5 +1,6 @@
 ---
-const whatsappLink = import.meta.env.PUBLIC_WHATSAPP_LINK ?? "https://wa.me/573000000000";
+import { getWhatsAppLink } from "@/utils/whatsapp";
+const whatsappLink = getWhatsAppLink();
 ---
 
 <section
